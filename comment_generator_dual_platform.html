@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>荆源楚味湖北特产品牌馆评论生成器</title>
+  <style>
+    body {
+      font-family: "PingFang SC", sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: #fffbe6;
+      color: #333;
+    }
+    .btn {
+      margin: 6px;
+      padding: 10px 16px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      background-color: #ffd84d;
+      color: #000;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #ffe97a;
+    }
+    #commentBox {
+      font-size: 18px;
+      margin: 30px 0;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      min-height: 80px;
+    }
+    .category {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>✨ 荆源楚味湖北特产品牌馆 评论生成器</h2>
+
+  <div class="category">
+    <button class="btn" onclick="switchCategory('cake')">🍰 糕点类</button>
+    <button class="btn" onclick="switchCategory('duck')">🦆 鸭货类</button>
+    <button class="btn" onclick="switchCategory('mix')">🎁 综合类</button>
+  </div>
+
+  <div id="commentBox">点击上方分类查看评论</div>
+
+  <button class="btn" onclick="getRandomComment()">🔄 换一句</button>
+  <button class="btn" onclick="copyComment()">📋 复制这句</button>
+  <br><br>
+  
+    <button class="btn" onclick="goToXiaohongshu()">📲 去小红书主页</button>
+    <button class="btn" onclick="goToDouyin()">📲 跳转抖音主页</button>
+    
+
+  <script>
+    const comments = {
+      cake: [
+        "这糕点太绝了，第一口下去我直接闭眼享受！",
+        "咬下去那一刻我真的差点跪在柜台前：太！好！吃！了！",
+        "吃第一块时还在评价口感，吃第二块就开始怀疑人生：怎么会这么好吃？",
+        "香气在嘴里炸裂开来，是认真的老武汉味道。",
+        "买的时候是食品，吃的时候是记忆。",
+        "嘴巴：“吃够了”，手：“再拿一块”。",
+        "这味道太逆天了，我愿称之为“糕点界的AI之光”！",
+        "点心颜色太干净，怎么拍都高级！",
+        "武汉人吃了都会点头的那种。",
+        "吃完第一块就想分享给每一个温柔的人。"
+      ],
+      duck: [
+        "这家的鸭脖太香了！香辣刚好，连骨头我都啃干净。",
+        "边吃鸭货边看剧，快乐就是这么简单。",
+        "鸭锁骨肉多味正，最适合懒得啃骨头的人。",
+        "辣得我嘴唇发麻但停不下来，太解压了！",
+        "鸭翅真的入味，每一口都是香气炸弹！",
+        "我一个人吃了一包鸭锁骨，边追剧边吮手指太上头！",
+        "嘴里是香辣，心里是满足！",
+        "边吃边笑，辣到流泪，爽到飞起。",
+        "小红书刷到就立刻下单，果然评论没骗人！",
+        "这家的鸭货我真的愿意实名吹爆！"
+      ],
+      mix: [
+        "热干面一搅拌，香气直接飘满整个房间！",
+        "芝麻酱味太浓郁了，一口下去幸福感爆棚～",
+        "武汉特产简直太懂吃了，每样都让人上头！",
+        "这家的热干面根根入味，酱香扑鼻，好评！",
+        "特产礼盒包装太有武汉feel，送人倍儿有面子。",
+        "我从武汉回来，亲戚朋友全问我买的是哪家鸭脖😆",
+        "外地朋友吃完热干面，直接喊我带他去武汉玩！",
+        "热干面+鸭翅=下饭搭子，吃完想跳舞那种满足！",
+        "买了一套尝鲜组合，结果成了我冰箱常驻嘉宾。",
+        "这才叫正宗特产，不是那种旅游景点糊弄人的！"
+      ]
+    };
+
+    let currentCategory = "cake";
+    let currentComment = "";
+
+    function switchCategory(cat) {
+      currentCategory = cat;
+      getRandomComment();
+    }
+
+    function getRandomComment() {
+      const arr = comments[currentCategory];
+      const index = Math.floor(Math.random() * arr.length);
+      currentComment = arr[index];
+      document.getElementById("commentBox").innerText = currentComment;
+    }
+
+    function copyComment() {
+      if (!currentComment) getRandomComment();
+      navigator.clipboard.writeText(currentComment).then(() => {
+        alert("✅ 文案已复制，快去小红书粘贴发布吧！");
+      }).catch(() => {
+        alert("❌ 复制失败，请长按手动复制");
+      });
+    }
+
+    function goToXiaohongshu() {
+      window.location.href = "https://xhslink.com/vyvpEfb?xhsshare=CopyLink&appuid=6440e604000000000c019333&apptime=1750654571&share_id=5511588e420948d896f5fbbb85e6d26a";
+    }
+
+    // 默认加载
+    getRandomComment();
+  
+    function goToDouyin() {
+      window.location.href = "https://v.douyin.com/dKY1yCEFAao/";
+    }
+    </script>
+    
+</body>
+</html>
